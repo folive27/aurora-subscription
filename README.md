@@ -1,38 +1,50 @@
-# Aurora Sub — 3x-ui Subscription Page
+# Aurora Subscription — 3x-ui White-label Sub Page
 
-A white-label custom subscription page for **3x-ui** panels — "Aurora Glass" design.
-RTL-first, 4 languages (فارسی / English / 中文 / Русский), zero external branding.
+A custom subscription page theme for **3x-ui** panels — "Aurora Glass" design.
+RTL-first, 4 languages (فارسی / English / 中文 / Русский), fully white-label: no seller name, no support/renew buttons, no external services.
 
-- `sub.html` — drop-in subscription theme file (production)
-- `demo.html` — rendered preview with fake data (open in a browser)
+| | |
+|---|---|
+| ![Home — dark](shots/01-home-dark.png) | ![Configs](shots/02-configs.png) |
+| Home (dark) — usage ring, expiry, IP/geo card | Configs — links, QR, quick rows |
+| ![Live search](shots/03-search.png) | ![Profile](shots/04-profile.png) |
+| Live config search (filters as you type) | Profile — account info |
+| ![QR modal](shots/06-qr.png) | ![Home — light](shots/07-home-light.png) |
+| QR modal (generated locally, no external service) | Home (light theme) |
+
+## Files
+- **`sub.html`** — production file. Drop it into your panel's custom subscription theme dir.
+- **`demo.html`** — the same page rendered with fake data — open directly in a browser to preview.
+- `shots/` — screenshots for this README.
 
 ## Features
-- 🌌 Aurora Glass design — animated aurora background, glass cards, dark + light themes
-- 🎯 4 tabs: Home / Configs / Apps / Profile
-- ⚡ Live search over configs (box appears when > 3 configs; JSON/Clash quick rows)
-- 🌍 Visitor IP & geo card with protection-status banner and manual refresh
-- 📢 Panel announce banner (auto-hidden when empty)
-- 🟢 Online status dot in header (pulsing green = online)
-- 📊 Usage ring, expiry countdown, upload/download stats
-- 📱 QR codes generated locally in-page (no external QR service — no data leak)
-- 🧩 IPv6-safe layout · iPhone safe-area · smooth scroll
+- 🌌 **Aurora Glass design** — animated aurora background, glass cards, dark + light themes
+- 🎯 **4 tabs** — Home / Configs / Apps / Profile
+- ⚡ **Live config search** — box appears when you have more than 3 configs; filters instantly; JSON / Clash quick-copy rows
+- 🌍 **Visitor IP & geo card** — shows the visitor's IP, country flag, and a protection-status banner; manual refresh button
+- 📢 **Panel announce banner** — set an announcement in the panel; empty = auto-hidden
+- 🟢 **Online dot** — pulsing green when the panel reports the user online
+- 📊 **Usage ring + expiry countdown** — Persian digits, readable stats
+- 📱 **QR codes generated locally** in-page — no external QR service, nothing leaks
+- 🧩 **IPv6-safe layout** · iPhone safe-area insets · smooth scrolling · reduced-motion friendly
 
 ## 3x-ui compatibility
-- Works on 3x-ui v3.7+ (uses `announce` / `isOnline` when the panel provides them)
-- On older panels (< v3.6.0) these fields don't exist → banner/dot auto-hide, no errors
+- Best on **3x-ui v3.7+** (uses `announce` / `isOnline` when the panel provides them).
+- On older panels (**< v3.6.0**) those fields don't exist — the banner and dot auto-hide with **zero errors**.
 
 ## Install
-1. Enable the custom subscription theme in your 3x-ui panel settings.
-2. Point the sub theme directory (`subThemeDir`) to a folder containing `sub.html`.
+1. In your 3x-ui panel settings, enable the **custom subscription** theme.
+2. Point `subThemeDir` to a folder containing `sub.html`.
+3. Done — open any subscription link.
 
 ---
 ## فارسی
-صفحهٔ اشتراک سفارشی وایت‌لیبل برای پنل **3x-ui** با طراحی Aurora Glass.
+صفحهٔ اشتراک سفارشی و **وایت‌لیبل** برای پنل **3x-ui** با طراحی Aurora Glass.
 
-- فایل اصلی: `sub.html` — پیش‌نمایش رندرشده: `demo.html`
-- بدون هیچ نام/برند فروشنده و بدون دکمهٔ پشتیبانی یا تمدید — کاملاً وایت‌لیبل
-- سرچ زندهٔ کانفیگ، کارت IP و موقعیت، بنر اعلان پنل، دات آنلاین هدر
-- QR به‌صورت محلی داخل صفحه (بدون سرویس بیرونی)، ۴ زبان، راست‌چین
-- روی پنل‌های قدیمی‌تر از 3.6.0 (بدون فیلدهای announce/isOnline) همه‌چیز بی‌خطا و خودکار مخفی می‌شود
+- **`sub.html`** فایل اصلی (کافیست در پوشهٔ قالب اشتراک سفارشی پنل قرار بگیرد) — **`demo.html`** پیش‌نمایش با دادهٔ جعلی.
+- بدون هیچ نام/برند فروشنده، بدون دکمهٔ پشتیبانی یا تمدید — کاملاً وایت‌لیبل.
+- سرچ زندهٔ کانفیگ، کارت IP و موقعیت بازدیدکننده، بنر اعلان پنل، دات آنلاین هدر، شمارش معکوس انقضا، QR محلی (بدون سرویس بیرونی).
+- ۴ زبان (فارسی / English / 中文 / Русский)، راست‌چین، سازگار با IPv6.
+- روی پنل‌های قدیمی‌تر از 3.6.0 (بدون فیلدهای `announce`/`isOnline`) همه‌چیز بی‌خطا و خودکار مخفی می‌شود.
 
-**نصب:** در تنظیمات پنل 3x-ui قالب اشتراک سفارشی را فعال کن و پوشهٔ قالب (`subThemeDir`) را به پوشه‌ای که `sub.html` داخل آن است اشاره بده.
+**نصب:** در تنظیمات پنل، قالب اشتراک سفارشی را فعال کن و `subThemeDir` را به پوشه‌ای که `sub.html` داخل آن است اشاره بده.
