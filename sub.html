@@ -313,7 +313,7 @@ html[dir="ltr"] .config-search-icon{right:auto;left:.8rem}
 .ip-value::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:4px}
 .ip-location-wrap{display:flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:700;
   flex-shrink:0;white-space:nowrap}
-.ip-country-flag{font-size:1.25rem;line-height:1}
+.ip-country-flag{font-size:1.25rem;line-height:1;flex-shrink:0}
 .ip-status-banner{display:flex;align-items:flex-start;gap:.55rem;margin-top:.6rem;font-size:.72rem;
   font-weight:600;padding:.55rem .75rem;border-radius:var(--radius-sm);line-height:1.5;text-align:justify}
 .ip-status-banner.protected{background:rgba(16,185,129,.1);color:var(--success);border:1px solid rgba(16,185,129,.15)}
@@ -418,13 +418,7 @@ html[dir="ltr"] .config-search-icon{right:auto;left:.8rem}
               <i class="fa-solid fa-bolt" style="color: var(--color-apps);"></i>
               <span id="quickImportLabel">افزودن سریع به برنامه‌ها</span>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 0.5rem;">
-              <a id="btnImportV2rayNG" href="#" class="btn-secondary" style="padding: 0.6rem 0.15rem; font-size: 0.65rem; display: flex; flex-direction: column; align-items: center; gap: 0.3rem;"><i class="fa-brands fa-android" style="color: var(--color-apps); font-size: 1rem;"></i> v2rayNG</a>
-              <a id="btnImportHiddify" href="#" class="btn-secondary" style="padding: 0.6rem 0.15rem; font-size: 0.65rem; display: flex; flex-direction: column; align-items: center; gap: 0.3rem;"><i class="fa-solid fa-shield-halved" style="color: var(--color-apps); font-size: 1rem;"></i> Hiddify</a>
-              <a id="btnImportHapp" href="#" class="btn-secondary" style="padding: 0.6rem 0.15rem; font-size: 0.65rem; display: flex; flex-direction: column; align-items: center; gap: 0.3rem;"><i class="fa-solid fa-bolt-lightning" style="color: var(--color-apps); font-size: 1rem;"></i> Happ</a>
-              <a id="btnImportIncy" href="#" class="btn-secondary" style="padding: 0.6rem 0.15rem; font-size: 0.65rem; display: flex; flex-direction: column; align-items: center; gap: 0.3rem;"><i class="fa-solid fa-rocket" style="color: var(--color-apps); font-size: 1rem;"></i> Incy</a>
-              <a id="btnImportV2box" href="#" class="btn-secondary" style="padding: 0.6rem 0.15rem; font-size: 0.65rem; display: flex; flex-direction: column; align-items: center; gap: 0.3rem;"><i class="fa-solid fa-box-open" style="color: var(--color-apps); font-size: 1rem;"></i> V2Box</a>
-            </div>
+            <div id="quickImportGrid" style="display: grid; gap: 0.5rem;"></div>
           </div>
 
           <div class="main-actions">
@@ -498,7 +492,7 @@ html[dir="ltr"] .config-search-icon{right:auto;left:.8rem}
             <div class="ip-display-row">
               <div class="ip-value" id="userIpText">در حال دریافت...</div>
               <div class="ip-location-wrap" id="userLocationWrap">
-                <span class="ip-country-flag" id="userFlagText">🌐</span>
+                <span class="ip-country-flag" id="userFlagText"><i class="fa-solid fa-globe"></i></span>
                 <span id="userCountryText">—</span>
               </div>
             </div>
@@ -2915,6 +2909,50 @@ var qrcode = function() {
       // اسم دلخواه پنل خودتان را اینجا بنویسید:
       const myCustomTitle = "VPNCENTERS";
 
+      // ======================== CONFIG — قابل ویرایش ========================
+      // هر مقداری که اینجا وارد کنید جایگزین مقدار پنل می‌شود؛ خالی = مقدار پنل.
+      const CONFIG = {
+        // متن اطلاعیه‌ای که بالای داشبورد نمایش داده می‌شود.
+        // خالی بماند: اطلاعیه‌ی خود پنل نمایش داده می‌شود.
+        announce: "",
+
+        // فهرست برنامه‌های تب «نرم‌افزارها»، گروه‌بندی‌شده بر اساس سیستم‌عامل.
+        // هر گروه: platform تیتر گروه، icon کلاس Font Awesome، و apps فهرست برنامه‌ها.
+        // هر برنامه: name نام نمایشی و url لینک دانلود.
+        apps: [
+          { platform: "Android", icon: "fa-brands fa-android", apps: [
+            { name: "v2rayNG", url: "https://github.com/2dust/v2rayNG/releases" },
+            { name: "Happ",    url: "https://play.google.com/store/apps/details?id=com.happproxy" },
+            { name: "Incy",    url: "https://play.google.com/store/apps/details?id=llc.itdev.incy" },
+            { name: "V2Box (Recommend)",   url: "https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" },
+          ]},
+          { platform: "iOS", icon: "fa-brands fa-apple", apps: [
+            { name: "Streisand",    url: "https://apps.apple.com/app/id6450534064" },
+            { name: "Shadowrocket", url: "https://apps.apple.com/app/id932747118" },
+            { name: "Happ",         url: "https://apps.apple.com/app/id6504287215" },
+            { name: "V2Box (Recommend)",        url: "https://apps.apple.com/app/id6446814690" },
+          ]},
+          { platform: "Windows", icon: "fa-brands fa-windows", apps: [
+            { name: "v2rayN",  url: "https://github.com/2dust/v2rayN/releases" },
+            { name: "Hiddify (Recommend)", url: "https://github.com/hiddify/hiddify-app/releases" },
+            { name: "Nekoray", url: "https://github.com/MatsuriDayo/nekoray" },
+            { name: "Happ",    url: "https://github.com/Happ-proxy/happ-desktop/releases" },
+          ]},
+        ],
+
+        // دکمه‌های «افزودن سریع» در داشبورد؛ هر دکمه لینک اشتراک را مستقیم در برنامه باز می‌کند.
+        // داخل scheme از این جای‌نگهدارها استفاده کنید:
+        // {SUB_URL} لینک اشتراک · {SUB_URL_ENCODED} همان لینک به شکل URL-encoded · {SUB_TITLE} نام اشتراک
+        quickImport: [
+          { name: "v2rayNG", icon: "fa-brands fa-android",       scheme: "v2rayng://install-config?url={SUB_URL_ENCODED}" },
+          { name: "Hiddify", icon: "fa-solid fa-shield-halved",  scheme: "hiddify://import/{SUB_URL}" },
+          { name: "Happ",    icon: "fa-solid fa-bolt-lightning", scheme: "happ://add/{SUB_URL}" },
+          { name: "Incy",    icon: "fa-solid fa-rocket",         scheme: "incy://import/{SUB_URL}" },
+          { name: "V2Box",   icon: "fa-solid fa-box-open",       scheme: "v2box://install-sub?url={SUB_URL_ENCODED}&title={SUB_TITLE}" },
+        ],
+      };
+
+
       // ======================== VARIABLES FROM BACKEND ========================
       const templateVars = {
         sId: "{{ .sId }}",
@@ -3485,12 +3523,18 @@ var qrcode = function() {
 
       // Configs Rendering
       function getCountryFlag(countryCode) {
-        if (!countryCode || countryCode.length !== 2) return "🌐";
+        if (!countryCode || countryCode.length !== 2) return "";
         const codePoints = countryCode
           .toUpperCase()
           .split("")
           .map(c => 127397 + c.charCodeAt(0));
         return String.fromCodePoint(...codePoints);
+      }
+
+      const GLOBE_ICON = '<i class="fa-solid fa-globe"></i>';
+      function setCountryFlag(el, countryCode) {
+        if (!el) return;
+        el.innerHTML = getCountryFlag(countryCode) || GLOBE_ICON;
       }
 
       async function checkPublicIp() {
@@ -3519,7 +3563,7 @@ var qrcode = function() {
 
           if (data && data.success) {
             if (ipEl) ipEl.innerText = data.ip;
-            if (flagEl) flagEl.innerText = getCountryFlag(data.country_code);
+            if (flagEl) setCountryFlag(flagEl, data.country_code);
             if (countryEl) countryEl.innerText = data.country || data.country_code;
 
             const isIran = data.country_code === "IR";
@@ -3544,7 +3588,7 @@ var qrcode = function() {
           }
         } catch (err) {
           if (ipEl) ipEl.innerText = t("ipError");
-          if (flagEl) flagEl.innerText = "⚠️";
+          if (flagEl) flagEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
           if (countryEl) countryEl.innerText = "—";
         } finally {
           if (btn) btn.classList.remove("spinning");
@@ -3569,7 +3613,7 @@ var qrcode = function() {
           let cleanCfg = cfg.trim();
 
           if (cleanCfg.startsWith("tg://")) {
-            name = t("telegramProxy") + " 🚀";
+            name = t("telegramProxy");
           } else if (cleanCfg.startsWith("vmess://")) {
             name = t("vmessConfig") + " " + formatDisplay(idx + 1);
           } else {
@@ -3593,17 +3637,38 @@ var qrcode = function() {
         container.innerHTML = html;
       }
 
+      function buildImportUrl(scheme) {
+        return scheme
+          .replace(/\{SUB_URL_ENCODED\}/g, encodeURIComponent(subLink))
+          .replace(/\{SUB_URL\}/g, subLink)
+          .replace(/\{SUB_TITLE\}/g, encodeURIComponent(normalize(templateVars.subTitle, "Sub")));
+      }
+
+      function renderQuickImport() {
+        const grid = document.getElementById("quickImportGrid");
+        if (!grid) return;
+
+        const perRow = Math.min(CONFIG.quickImport.length, 5) || 1;
+        grid.style.gridTemplateColumns = `repeat(${perRow}, minmax(0, 1fr))`;
+
+        grid.innerHTML = CONFIG.quickImport.map((app) => `
+          <a href="#" class="btn-secondary" style="padding: 0.6rem 0.15rem; font-size: 0.65rem; display: flex; flex-direction: column; align-items: center; gap: 0.3rem;"><i class="${app.icon}" style="color: var(--color-apps); font-size: 1rem;"></i> ${app.name}</a>
+        `).join('');
+
+        grid.querySelectorAll("a").forEach((el, idx) => {
+          const app = CONFIG.quickImport[idx];
+          if (app && subLink) el.setAttribute("href", buildImportUrl(app.scheme));
+        });
+      }
+
       function renderApps() {
-        let apps = [
-          { name: "Android", icon: "fa-brands fa-android", list: [{n:"v2rayNG", url:"https://github.com/2dust/v2rayNG/releases"}, {n:"Happ", url:"https://play.google.com/store/apps/details?id=com.happproxy"}, {n:"Incy", url:"https://play.google.com/store/apps/details?id=llc.itdev.incy"}, {n:"V2Box", url:"https://play.google.com/store/apps/details?id=dev.v2box.android"}] },
-          { name: "iOS", icon: "fa-brands fa-apple", list: [{n:"Streisand", url:"https://apps.apple.com/app/id6450534064"}, {n:"Shadowrocket", url:"https://apps.apple.com/app/id932747118"}, {n:"Happ", url:"https://apps.apple.com/app/id6504287215"}, {n:"V2Box", url:"https://apps.apple.com/app/id6446814690"}] },
-          { name: "Windows", icon: "fa-brands fa-windows", list: [{n:"v2rayN", url:"https://github.com/2dust/v2rayN/releases"}, {n:"Hiddify", url:"https://github.com/hiddify/hiddify-app/releases/latest/download/Hiddify-Windows-Setup-x64.Msix"}, {n:"Nekoray", url:"https://github.com/MatsuriDayo/nekoray"}, {n:"Happ", url:"https://github.com/Happ-proxy/happ-desktop/releases"}] }
-        ];
-        let grid = document.getElementById("appsGridContainer");
+        const apps = CONFIG.apps;
+        const grid = document.getElementById("appsGridContainer");
+        if (!grid) return;
         grid.innerHTML = apps.map(os => `
           <div class="app-group">
-            <div class="app-group-title"><i class="${os.icon}"></i> ${os.name}</div>
-            ${os.list.map(app => `<a href="${app.url}" target="_blank" class="app-link"><span>${app.n}</span><i class="fa-solid fa-download"></i></a>`).join('')}
+            <div class="app-group-title"><i class="${os.icon}"></i> ${os.platform}</div>
+            ${os.apps.map(app => `<a href="${app.url}" target="_blank" rel="noopener noreferrer" class="app-link"><span>${app.name}</span><i class="fa-solid fa-download"></i></a>`).join('')}
           </div>
         `).join('');
       }
@@ -3649,7 +3714,7 @@ var qrcode = function() {
 
         const announceCard = document.getElementById("announceCard");
         const announceText = document.getElementById("announceText");
-        const announceVal = normalize(templateVars.announce, "");
+        const announceVal = normalize(CONFIG.announce, "") || normalize(templateVars.announce, "");
         if (announceCard && announceText) {
           if (announceVal) {
             announceText.textContent = announceVal;
@@ -3708,13 +3773,7 @@ var qrcode = function() {
         document.getElementById("pLabelLastOnline").innerText = t("pLastOnline");
         document.getElementById("pLabelExpiryDate").innerText = t("pExpiryDate");
 
-        if (subLink) {
-          document.getElementById("btnImportV2rayNG").href = `v2rayng://install-config?url=${encodeURIComponent(subLink)}`;
-          document.getElementById("btnImportHiddify").href = `hiddify://import/${subLink}`;
-          document.getElementById("btnImportIncy").href = `incy://import/${subLink}`;
-          document.getElementById("btnImportHapp").href = `happ://add/${subLink}`;
-          document.getElementById("btnImportV2box").href = `v2box://install-sub?url=${encodeURIComponent(subLink)}&title=${encodeURIComponent(normalize(templateVars.subTitle, 'Sub'))}`;
-        }
+        renderQuickImport();
         
         if (emailsList.length > 0) {
           let emailEl = document.getElementById("userEmailText");

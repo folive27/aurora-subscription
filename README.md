@@ -16,6 +16,7 @@ RTL-first, 4 languages (فارسی / English / 中文 / Русский), fully w
 - 🌌 **Aurora Glass design** — animated aurora background, glass cards, dark + light themes
 - 🎯 **4 tabs** — Home / Configs / Apps / Profile
 - ⚡ **Live config search** — box appears when you have more than 3 configs; filters instantly; JSON / Clash quick-copy rows
+- ⚙️ **Editable CONFIG block** — announce text, app list, and quick-import buttons editable in one place at the top of the script; empty values fall back to the panel
 - 🌍 **Visitor IP & geo card** — shows the visitor's IP, country flag, and a protection-status banner; manual refresh button
 - 📢 **Panel announce banner** — set an announcement in the panel; empty = auto-hidden
 - 🟢 **Online dot** — pulsing green when the panel reports the user online
