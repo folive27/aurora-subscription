@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Install / update Aurora Subscription sub-page for 3x-ui panels.
-#   bash <(curl -fsSL https://raw.githubusercontent.com/folive27/aurora-subscription/main/install.sh)
+#   bash <(curl -fsSL https://raw.githubusercontent.com/frank0live/aurora-subscription/main/install.sh)
 #
 # What it does:
 #   1. Sanity: root + 3x-ui panel detected (fails early on the wrong server)
@@ -16,7 +16,7 @@
 #   AURORA_BASE=https://…/main                          custom file source (testing)
 set -u
 
-REPO="folive27/aurora-subscription"
+REPO="frank0live/aurora-subscription"
 BRANCH="main"
 BASE="${AURORA_BASE:-https://raw.githubusercontent.com/$REPO/$BRANCH}"
 INSTALLER_VERSION="1.3.0"

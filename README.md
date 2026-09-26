@@ -30,7 +30,7 @@ RTL-first, 4 languages (فارسی / English / 中文 / Русский), fully w
 برای نصب یا آپدیت، این دستور را روی سرور پنل (با کاربر root) اجرا کنید:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/folive27/aurora-subscription/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/frank0live/aurora-subscription/main/install.sh)
 ```
 
 نصب‌کننده این کارها را خودکار انجام می‌دهد:
@@ -78,6 +78,6 @@ bash <(curl -fsSL https://raw.githubusercontent.com/folive27/aurora-subscription
 - ۴ زبان (فارسی / English / 中文 / Русский)، راست‌چین، سازگار با IPv6.
 - روی پنل‌های قدیمی‌تر از 3.6.0 (بدون فیلدهای `announce`/`isOnline`) همه‌چیز بی‌خطا و خودکار مخفی می‌شود.
 
-**نصب خودکار:** `bash <(curl -fsSL https://raw.githubusercontent.com/folive27/aurora-subscription/main/install.sh)`
+**نصب خودکار:** `bash <(curl -fsSL https://raw.githubusercontent.com/frank0live/aurora-subscription/main/install.sh)`
 
 **نصب دستی:** در تنظیمات پنل، قالب اشتراک سفارشی را فعال کن و `subThemeDir` را به پوشه‌ای که `sub.html` داخل آن است اشاره بده.
